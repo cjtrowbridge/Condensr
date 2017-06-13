@@ -161,15 +161,22 @@ function pd($Var){
       <div class="form-group">
         <label for="longform">Put some long-form text here</label>
         <textarea class="form-control" name="longform" id="longform" rows="6"><?php
-          if(isset($_POST['longform'])){
-            echo $_POST['longform'];
+          if(isset($_REQUEST['longform'])){
+            echo $_REQUEST['longform'];
           }
         ?></textarea>
       </div>
       <div class="form-group row">
         <div class="col-xs-12 form-inline">
+          Or Specify a URL:
+          <input class="form-control" type="number" name="LongformURL" value="<?php if(isset($_REQUEST['LongformURL'])){echo $_REQUEST['LongformURL'];} ?>" id="LongformURL">
+          <input type="submit" class="btn btn-success float-right" value="Condense">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-xs-12 form-inline">
           Number of Sentences:
-          <input class="form-control" type="number" name="numberOfSentences" value="<?php if(isset($_POST['numberOfSentences'])){echo $_POST['numberOfSentences'];}else{echo '2';}?>" id="numberOfSentences">
+          <input class="form-control" type="number" name="numberOfSentences" value="<?php if(isset($_REQUEST['numberOfSentences'])){echo $_REQUEST['numberOfSentences'];}else{echo '2';}?>" id="numberOfSentences">
           <input type="submit" class="btn btn-success float-right" value="Condense">
         </div>
       </div>
@@ -179,16 +186,29 @@ function pd($Var){
     <div class="row">
       <div class="col-xs-12 col-md-4">
         <?php
-          if(isset($_POST['longform'])){
-            $Words = GetWordScores(CleanUp($_POST['longform']));
+          if(isset($_REQUEST['longform'])){
+            $Words = GetWordScores(CleanUp($_REQUEST['longform']));
             echo ArrTabler($Words);
           }
         ?>
       </div>
       <div class="col-xs-12 col-md-8">
         <?php
-          if(isset($_POST['longform'])){
-            echo Condense($_POST['longform'],$_POST['numberOfSentences']);
+          if(isset($_REQUEST['LongformURL'])){
+          
+            $Longform=file_get_contents($_REQUEST['LongformURL']);
+            if(isset($_REQUEST['numberOfSentences'])){
+              $numberOfSentences = $_REQUEST['numberOfSentences'];
+            }else{
+              $numberOfSentences = 2;
+            }
+            
+            echo Condense($Longform,$numberOfSentences);
+          
+          }elseif(isset($_REQUEST['longform'])){
+          
+            echo Condense($_REQUEST['longform'],$_REQUEST['numberOfSentences']);
+          
           }
         ?>
       </div>
