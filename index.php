@@ -169,7 +169,7 @@ function pd($Var){
       <div class="form-group row">
         <div class="col-xs-12 form-inline">
           Number of Sentences:
-          <input class="form-control" type="number" name="numberOfSentences" value="<?php if(isset($_POST['numberOfSentences'])){echo $_POST['numberOfSentences'];} ?>" id="numberOfSentences">
+          <input class="form-control" type="number" name="numberOfSentences" value="<?php if(isset($_POST['numberOfSentences'])){echo $_POST['numberOfSentences'];}else{echo '2';}?>" id="numberOfSentences">
           <input type="submit" class="btn btn-success float-right" value="Condense">
         </div>
       </div>
