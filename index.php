@@ -91,6 +91,43 @@ function SortByScore(&$arr, $col = 'Score', $dir = SORT_DESC) {
     array_multisort($sort_col, $dir, $arr);
 }
 
+function ArrTabler($arr, $table_class = 'table tablesorter tablesorter-ice tablesorter-bootstrap', $table_id = null){
+  $return='';
+  if($table_id==null){
+    $table_id=md5(uniqid(true));
+  }
+  if(count($arr)>0){
+    $return.="\n<div class=\"table-responsive\">\n";
+    $return.= "\r\n".'	<table id="'.$table_id.'" class=" table'.$table_class.'">'."\n";
+    $first=true;
+    foreach($arr as $row){
+      if($first){
+        $return.= "		<thead>\n";
+        $return.= "			<tr>\n";
+        foreach($row as $key => $value){
+          $return.= "				<th>".ucwords($key)."</th>\n";
+        }
+        $return.= "			</tr>\n";
+        $return.= "		</thead>\n";
+        $return.= "		<tbody>\n";
+      }
+      $first=false;
+      $return.= "			<tr>\n";
+      foreach($row as $key => $value){
+        $return.="<td>".OutputMask($key, $value,$row)."</td>";
+      }
+      $return.= "			</tr>\n";
+    }
+    $return.= "		</tbody>\n";
+    $return.= "	</table>\n";
+    $return.= "</div>\n";
+    $return.= "<script>$('#".$table_id."').tablesorter({widgets: ['zebra', 'filter']});</script>\n";
+  }else{
+    $return.="No Results Found.";
+  }
+  return $return;
+}
+
 function pd($Var){
   echo '<pre>';
   var_dump($Var);
@@ -114,6 +151,8 @@ function pd($Var){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.8/js/jquery.tablesorter.combined.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.8/css/theme.bootstrap_4.min.css">
 </head>
 <body>
   <div class="container no-gutters">
@@ -141,7 +180,8 @@ function pd($Var){
       <div class="col-xs-12 col-md-4">
         <?php
           if(isset($_POST['longform'])){
-            pd(GetWordScores(CleanUp($_POST['longform'])));
+            $Words = GetWordScores(CleanUp($_POST['longform']));
+            echo ArrTabler($Words);
           }
         ?>
       </div>
