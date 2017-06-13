@@ -114,7 +114,7 @@ function ArrTabler($arr, $table_class = 'table tablesorter tablesorter-ice table
       $first=false;
       $return.= "			<tr>\n";
       foreach($row as $key => $value){
-        $return.="<td>".OutputMask($key, $value,$row)."</td>";
+        $return.="<td>".$value."</td>";
       }
       $return.= "			</tr>\n";
     }
