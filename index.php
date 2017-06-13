@@ -208,6 +208,9 @@ function pd($Var){
               $numberOfSentences = 2;
             }
             
+            //Clean up the contents of the page before condensing
+            $Longform = strip_tags($Longform);
+            
             echo Condense($Longform,$numberOfSentences);
           
           }elseif(isset($_REQUEST['longform'])){
