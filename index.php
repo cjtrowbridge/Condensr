@@ -168,15 +168,14 @@ function pd($Var){
       </div>
       <div class="form-group row">
         <div class="col-xs-12 form-inline">
-          Or Specify a URL:
-          <input class="form-control" type="number" name="LongformURL" value="<?php if(isset($_REQUEST['LongformURL'])){echo $_REQUEST['LongformURL'];} ?>" id="LongformURL">
-          <input type="submit" class="btn btn-success float-right" value="Condense">
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-xs-12 form-inline">
-          Number of Sentences:
-          <input class="form-control" type="number" name="numberOfSentences" value="<?php if(isset($_REQUEST['numberOfSentences'])){echo $_REQUEST['numberOfSentences'];}else{echo '2';}?>" id="numberOfSentences">
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">URL Instead:</span>
+            <input class="form-control" type="text" name="LongformURL" value="<?php if(isset($_REQUEST['LongformURL'])){echo $_REQUEST['LongformURL'];} ?>" id="LongformURL" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon2">Number of Sentences:</span>
+            <input class="form-control" type="number" name="numberOfSentences" value="<?php if(isset($_REQUEST['numberOfSentences'])){echo $_REQUEST['numberOfSentences'];}else{echo '2';}?>" id="numberOfSentences" aria-describedby="basic-addon1">
+          </div>
           <input type="submit" class="btn btn-success float-right" value="Condense">
         </div>
       </div>
