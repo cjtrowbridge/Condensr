@@ -168,15 +168,21 @@ function pd($Var){
       </div>
       <div class="form-group row">
         <div class="col-xs-12 form">
-          <div class="input-group col-xs-12 col-md-4">
-            <span class="input-group-addon" id="basic-addon1">URL Instead:</span>
-            <input class="form-control" type="text" name="LongformURL" value="<?php if(isset($_REQUEST['LongformURL'])){echo $_REQUEST['LongformURL'];} ?>" id="LongformURL" aria-describedby="basic-addon1">
+          <div class="col-xs-12 col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">URL Instead:</span>
+              <input class="form-control" type="text" name="LongformURL" value="<?php if(isset($_REQUEST['LongformURL'])){echo $_REQUEST['LongformURL'];} ?>" id="LongformURL" aria-describedby="basic-addon1">
+            </div>
           </div>
-          <div class="input-group col-xs-12 col-md-4">
-            <span class="input-group-addon" id="basic-addon2">Number of Sentences:</span>
-            <input class="form-control" type="number" name="numberOfSentences" value="<?php if(isset($_REQUEST['numberOfSentences'])){echo $_REQUEST['numberOfSentences'];}else{echo '2';}?>" id="numberOfSentences" aria-describedby="basic-addon1">
+          <div class="col-xs-12 col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon2">Number of Sentences:</span>
+              <input class="form-control" type="number" name="numberOfSentences" value="<?php if(isset($_REQUEST['numberOfSentences'])){echo $_REQUEST['numberOfSentences'];}else{echo '2';}?>" id="numberOfSentences" aria-describedby="basic-addon1">
+            </div>
           </div>
-          <input type="submit" class="btn btn-success  col-xs-12 col-md-4" value="Condense">
+          <div class="col-xs-12 col-md-4">
+            <input type="submit" class="btn btn-success btn-block" value="Condense">
+          </div>
         </div>
       </div>
     </form>
