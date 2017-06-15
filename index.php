@@ -67,7 +67,7 @@ function GetWordScores($Text){
   $WordScores = array_count_values(str_word_count($Text, 1));
 
   $Scores  = array();
-  $Ignore=array('a','the','s','and','he','she','said','his','hers','with','in','is','of','that','have','not','on','to','be','it','like','only','was','from','more','many','so','who','also','would','an','at','doesn','t','i','for','think','be','function','var','com','if','in','has','been','or','are','you');
+  $Ignore=array('a','the','s','and','he','she','said','his','hers','with','in','is','of','that','have','not','on','to','be','it','like','only','was','from','more','many','so','who','also','would','an','at','doesn','t','i','for','think','be','function','var','com','if','in','has','been','or','are','you','this','as','these','your','my');
 
   foreach($WordScores as $Word => $Score){
     if(!(
