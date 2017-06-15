@@ -47,6 +47,7 @@ function Condense($Text,$NumberOfSentences = 1){
 
 function CleanUp($Text){
   $CleanText = strtolower($Text);
+  $CleanText = str_replace(PHP_EOL,".",$CleanText);
   $CleanText = str_replace("'","",$CleanText);
   $CleanText = str_replace('"','',$CleanText);
   $CleanText = trim($CleanText);
