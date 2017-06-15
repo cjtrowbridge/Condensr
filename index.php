@@ -207,18 +207,18 @@ function pd($Var){
             $Longform=file_get_contents($_REQUEST['LongformURL']);
             if($Longform==false){
               echo '<p>Invalid URL</p>';
-              break;
-            }
-            if(isset($_REQUEST['numberOfSentences'])){
-              $numberOfSentences = $_REQUEST['numberOfSentences'];
             }else{
-              $numberOfSentences = 2;
+              if(isset($_REQUEST['numberOfSentences'])){
+                $numberOfSentences = $_REQUEST['numberOfSentences'];
+              }else{
+                $numberOfSentences = 2;
+              }
+
+              //Clean up the contents of the page before condensing
+              $Longform = strip_tags($Longform);
+
+              echo Condense($Longform,$numberOfSentences);
             }
-            
-            //Clean up the contents of the page before condensing
-            $Longform = strip_tags($Longform);
-            
-            echo Condense($Longform,$numberOfSentences);
           
           }elseif(isset($_REQUEST['longform'])){
           
