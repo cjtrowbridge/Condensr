@@ -199,9 +199,16 @@ function pd($Var){
       </div>
       <div class="col-xs-12 col-md-8">
         <?php
-          if(isset($_REQUEST['LongformURL'])){
+          if(
+            isset($_REQUEST['LongformURL'])&&
+            (!(trim($_REQUEST['LongformURL'])==''))
+          ){
           
             $Longform=file_get_contents($_REQUEST['LongformURL']);
+            if($Longform==false){
+              echo '<p>Invalid URL</p>';
+              break;
+            }
             if(isset($_REQUEST['numberOfSentences'])){
               $numberOfSentences = $_REQUEST['numberOfSentences'];
             }else{
