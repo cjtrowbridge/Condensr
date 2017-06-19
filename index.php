@@ -144,7 +144,7 @@ function pd($Var){
 
   <link rel="icon" href="<?php echo $ASTRIA['app']['favicon']; ?>">
 
-  <title>Condense</title>
+  <title>Condensr</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
@@ -157,7 +157,7 @@ function pd($Var){
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.8/css/theme.ice.min.css">
 <body>
   <div class="container no-gutters">
-    <h1>Condense</h1>
+    <h1>Condensr</h1>
     <form action="" class="form" method="post">
       <div class="form-group">
         <label for="longform">Put some long-form text here</label>
