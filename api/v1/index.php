@@ -5,26 +5,30 @@ if(
   (!(trim($_REQUEST['LongformURL'])==''))
 ){
 
-  $Longform=file_get_contents($_REQUEST['LongformURL']);
-  if($Longform==false){
+  $LongformText=file_get_contents($_REQUEST['LongformURL']);
+  if($LongformText==false){
     echo '<p>Invalid URL</p>';
   }else{
-    if(isset($_REQUEST['numberOfSentences'])){
-      $numberOfSentences = $_REQUEST['numberOfSentences'];
+    if(isset($_REQUEST['NumberOfSentences'])){
+      $NumberOfSentences = $_REQUEST['NumberOfSentences'];
     }else{
-      $numberOfSentences = 2;
+      $NumberOfSentences = 2;
     }
 
     //Clean up the contents of the page before condensing
-    $Longform = strip_tags($Longform);
+    //TODO get only the text in a better way that this
+    $LongformText = strip_tags($LongformText);
 
-    echo Condense($Longform,$numberOfSentences);
+    echo Condense($LongformText,$NumberOfSentences);
   }
 
-}elseif(isset($_REQUEST['longform'])){
+}elseif(isset($_REQUEST['LongformText'])){
 
-  echo Condense($_REQUEST['longform'],$_REQUEST['numberOfSentences']);
+  echo Condense($_REQUEST['LongformText'],$_REQUEST['NumberOfSentences']);
 
+}else{
+  //TODO
+  echo 'Welcome and here are some instructions...';
 }
 
 
