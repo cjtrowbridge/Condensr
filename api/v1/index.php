@@ -34,7 +34,7 @@ if(
     $_REQUEST['NumberOfSentences']=1;
   }
   
-  echo Condense($_REQUEST['LongformText'],$_REQUEST['NumberOfSentences']);
+  echo CacheCondensr($_REQUEST['LongformText'],$_REQUEST['NumberOfSentences']);
 
 }else{
   //TODO
@@ -42,6 +42,22 @@ if(
   exit;
 }
 
+function CacheCondensr($Text,$NumberOfSentences = 1){
+  
+  $NumberOfSentences=intval($NumberOfSentences);
+  if($NumberOfSentences==0){die('Invalid NumberOfSentences.');}
+  if($NumberOfSentences>100){die('NumberOfSentences has a maximum of 100');}
+  
+  $Path = 'cache/'.$NumberOfSentences.'.'.md5($Text).'.json';
+  
+  if(file_exists($Path)){
+    return file_get_contents($Path);
+  }
+  
+  $Output = Condense($Text,$NumberOfSentences);
+  file_put_contents($Path,$Output);
+  return $Output;
+}
 
 function Condense($Text,$NumberOfSentences = 1){
   //Clean Up The Text
@@ -180,3 +196,5 @@ function pd($Var){
   var_dump($Var);
   echo '</pre>';
 }
+
+
