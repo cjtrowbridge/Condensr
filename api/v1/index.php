@@ -38,7 +38,8 @@ if(
 
 }else{
   //TODO
-  echo 'Welcome and here are some instructions...';
+  include('about.html');
+  exit;
 }
 
 
