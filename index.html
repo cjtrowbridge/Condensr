@@ -52,11 +52,11 @@
 <script>
   $('#LongformText').focus();
   $("#Condense").click(function(){
+    
     var txt = $('#LongformText').val();
     var num = $('#NumberOfSentences').val();
     
     Condensr(txt,num,function(data){
-      console.log(data);
       $("#Results").html(data);
     });
     
