@@ -1,5 +1,6 @@
 <?php
 
+/* This will come later. Is not necessary for initial release and is nontrivial.
 if(
   isset($_REQUEST['LongformURL'])&&
   (!(trim($_REQUEST['LongformURL'])==''))
@@ -22,8 +23,15 @@ if(
     echo Condense($LongformText,$NumberOfSentences);
   }
 
-}elseif(isset($_REQUEST['LongformText'])){
-
+}else*/if(isset($_REQUEST['LongformText'])){
+  
+  if(
+    (!(isset($_REQUEST['NumberOfSentences'])))||
+    (intval($_REQUEST['NumberOfSentences'])==0)
+  ){
+    $_REQUEST['NumberOfSentences']=1;
+  }
+  
   echo Condense($_REQUEST['LongformText'],$_REQUEST['NumberOfSentences']);
 
 }else{
@@ -39,14 +47,18 @@ function Condense($Text,$NumberOfSentences = 1){
   //Score Words
   $Scores = GetWordScores($CleanText);
 
-  //Score Words
+  //Sort  Word Scores
   SortByScore($Scores, 'Score');
 
-  //Parse Sentences. Punctuation is irrelevant for the purposes of this algorithm.
+  //Parse Sentences. Punctuation is irrelevant for the purposes of sorting.
   $RawSentences = $Text;
-  $RawSentences = str_replace('?','.',$RawSentences);
-  $RawSentences = str_replace('!','.',$RawSentences);
-  $RawSentences = explode('.',$RawSentences);
+  
+  $RawSentences = str_replace('?','?||',$RawSentences);
+  $RawSentences = str_replace('!','!||',$RawSentences);
+  $RawSentences = str_replace('.','.||',$RawSentences);
+  $RawSentences = str_replace(PHP_EOL,"||",$RawSentences);
+  
+  $RawSentences = explode('||',$RawSentences);
   $Sentences = array();
   foreach($RawSentences as $RawSentence){
     $CleanSentence = CleanUp($RawSentence);
@@ -79,7 +91,6 @@ function Condense($Text,$NumberOfSentences = 1){
 
 function CleanUp($Text){
   $CleanText = strtolower($Text);
-  $CleanText = str_replace(PHP_EOL,".",$CleanText);
   $CleanText = str_replace("'","",$CleanText);
   $CleanText = str_replace('"','',$CleanText);
   $CleanText = trim($CleanText);
