@@ -1,9 +1,7 @@
-window.onload = function() {
-    if (window.jQuery) {  
-        
-    }else{
-        console.log('Condensr API requires JQuery.');
-    }
+window.onload = function(){
+  if(!(window.jQuery)){
+    console.log('Condensr API helper requires JQuery.');
+  }
 }
 
 function Condensr(txt,num,callback){
