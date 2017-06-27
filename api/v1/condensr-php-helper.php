@@ -18,6 +18,9 @@ function Condensr($LongformText,$NumberOfSentences=1){
   
   //Run cURL and close it
   $Data = curl_exec($cURL);
+  if(curl_exec($cURL) === false){
+    echo 'Curl error: ' . curl_error($cURL);
+  }
   curl_close($cURL);
   
   $Data=json_decode($Data,true);
