@@ -39,7 +39,11 @@ if(
   $End = microtime(true);
   $Output['message'].=' in '.round($End-$Start,4).' seconds.';
   
-  echo json_encode($Output);
+  header("Content-Type: application/json;charset=utf-8");
+  $Output=json_encode($Output,JSON_PRETTY_PRINT);
+  if($Output==false){
+    $Output = array('error'=>'There was a problem with the data.');
+  }
   
 }else{
   //TODO
