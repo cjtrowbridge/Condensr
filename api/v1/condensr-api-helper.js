@@ -11,6 +11,7 @@ function Condensr(txt,num,callback){
     callback && callback(data);
   });
   CondensrPOST.fail(function(data){
-    alert('Condensr Failed: '+data);
+    console.log('Condensr Failed:');
+    console.log(data);
   });
 }
