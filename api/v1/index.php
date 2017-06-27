@@ -34,8 +34,13 @@ if(
     $_REQUEST['NumberOfSentences']=1;
   }
   
-  echo CacheCondensr($_REQUEST['LongformText'],$_REQUEST['NumberOfSentences']);
-
+  $Start = microtime(true);
+  $Output = CacheCondensr($_REQUEST['LongformText'],$_REQUEST['NumberOfSentences']);
+  $End = microtime(true);
+  $Output['message'].=' in '.round($End-$Start,4).' seconds.';
+  
+  echo json_encode($Output);
+  
 }else{
   //TODO
   include('about.html');
@@ -51,12 +56,18 @@ function CacheCondensr($Text,$NumberOfSentences = 1){
   $Path = 'cache/'.$NumberOfSentences.'.'.md5($Text).'.json';
   
   if(file_exists($Path)){
-    return file_get_contents($Path);
+    return array(
+      'message'   => 'Fetched From Cache',
+      'condensed' => file_get_contents($Path)
+    );
   }
   
   $Output = Condense($Text,$NumberOfSentences);
   file_put_contents($Path,$Output);
-  return $Output;
+  return array(
+      'message'   => 'Condensed',
+      'condensed' => $Output
+    );
 }
 
 function Condense($Text,$NumberOfSentences = 1){
