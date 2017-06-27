@@ -1,7 +1,7 @@
 <?php
 
 function Condensr($LongformText,$NumberOfSentences=1){
-   $URL=='https://api.condensr.io/v1';
+   $URL='https://api.condensr.io/v1';
   
   $Arguments=array(
     'LongformText'      => $LongformText,
