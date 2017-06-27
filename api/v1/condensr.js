@@ -6,8 +6,8 @@ window.onload = function() {
     }
 }
 
-function Condensr(txt,callback){
-  var CondensrPOST = $.post('https://api.condensr.io/v1/',{LongformText: txt});
+function Condensr(txt,num,callback){
+  var CondensrPOST = $.post('https://api.condensr.io/v1/',{LongformText: txt,NumberOfSentences: num});
  
   CondensrPOST.done(function(data){
     callback && callback(data);
