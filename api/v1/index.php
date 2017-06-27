@@ -44,6 +44,7 @@ if(
   if($Output==false){
     $Output = array('error'=>'There was a problem with the data.');
   }
+  echo $Output;
   
 }else{
   //TODO
