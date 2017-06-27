@@ -1,4 +1,6 @@
-<?php
+<?php 
+
+header('Access-Control-Allow-Origin: *');
 
 /* This will come later. Is not necessary for initial release and is nontrivial.
 if(
