@@ -57,7 +57,6 @@
     var num = $('#NumberOfSentences').val();
     
     Condensr(txt,num,function(data){
-      console.log(data);
       $("#Results").html('<h2>Condensed:</h2><p><i>'+data.message+'</i></p><p>'+data.condensed+'</p>');
     });
     
