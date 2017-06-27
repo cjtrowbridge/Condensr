@@ -15,7 +15,7 @@ if(
     if(isset($_REQUEST['NumberOfSentences'])){
       $NumberOfSentences = $_REQUEST['NumberOfSentences'];
     }else{
-      $NumberOfSentences = 2;
+      $NumberOfSentences = 1;
     }
 
     //Clean up the contents of the page before condensing
