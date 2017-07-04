@@ -32,7 +32,7 @@ function GetArticleTextByURL($URL){
       $Article = $Div->textContent;
     }
     if($Article==''){
-      var_dump($Divs)[0];
+      var_dump($Divs[0]);
       exit;
     }
   }
