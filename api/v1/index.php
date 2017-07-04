@@ -24,6 +24,7 @@ if(
      
     $doc = new DOMDocument();
     $doc->loadHTML($LongformText);
+    var_dump($doc);
     $Article = $doc->getElementById('article-text');
     
     //TODO get only the text in a better way that this
