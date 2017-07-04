@@ -39,7 +39,8 @@
           <label for="longform">Put some long-form text here. We will condense it to as few sentences as you would like.</label>
           <textarea class="form-control" name="LongformText" id="LongformText" rows="6"><?php 
             if(isset($_REQUEST['LongformURL'])){
-              echo file_get_contents('https://condensr.io/api/v1/?LongformURL='.urlencode($_REQUEST['LongformURL']));
+              $URL = 'https://condensr.io/api/v1/?LongformURL='.urlencode($_REQUEST['LongformURL']);
+              echo file_get_contents($URL);
             }
           ?></textarea>
         </div>
