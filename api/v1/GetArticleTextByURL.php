@@ -34,6 +34,7 @@ function GetArticleTextByURL($URL){
     if($Article==''){
       var_dump($Divs);
       exit;
+    }
   }
 
   //Clean up article text
