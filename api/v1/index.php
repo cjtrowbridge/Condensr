@@ -21,13 +21,13 @@ if(
   //Get article text only
   $doc = new DOMDocument();
   $doc->loadHTML($LongformText);
-  $Article = trim($doc->getElementById('article-text')->textContent);
+  //$Article = trim($doc->getElementById('article-text')->textContent);
   
-  if(trim($Article->textContent)==''){
+  //if(trim($Article->textContent)==''){
     $Article = trim($doc->getElementsByTagName('body')[0]);
     var_dump($Article);
     exit;
-  }
+  //}
 
   //Clean up article text
   
