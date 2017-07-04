@@ -27,6 +27,7 @@ if(
     $Divs = $doc->getElementsByTagName('div');
     foreach($Divs as $Div){
       var_dump($Div);
+      var_dump($Div->attributes);
     }
     exit;
   }
