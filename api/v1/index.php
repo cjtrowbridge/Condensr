@@ -18,17 +18,21 @@ if(
     die('<p>Unable to fetch URL.</p>');
   }
   
+  $LongformText=strip_tags($LongformText);
+  
+  /*
+  
   //Get article text only
   $doc = new DOMDocument();
   $doc->loadHTML($LongformText);
   $Article = trim($doc->getElementById('article-text')->textContent);
   
   if(trim($Article->textContent)==''){
-    $Article = $doc->getElementsByTagName('body')[0];
+    $Article = trim($doc->getElementsByTagName('body')[0]->textContent);
     var_dump($Article);
     exit;
   }
-  
+  */
 
   //Clean up article text
   
