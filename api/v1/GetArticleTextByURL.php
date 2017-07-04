@@ -30,9 +30,10 @@ function GetArticleTextByURL($URL){
     $Divs = $doc->getElementsByTagName('article');
     foreach($Divs as $Div){
       $Article = $Div->textContent;
+      var_dump($Div);
     }
     if($Article==''){
-      var_dump($Divs[0]);
+      
       exit;
     }
   }
