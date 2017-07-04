@@ -2,15 +2,16 @@
 
 header('Access-Control-Allow-Origin: *');
 
-/* This will come later. Is not necessary for initial release and is nontrivial.
 if(
   isset($_REQUEST['LongformURL'])&&
   (!(trim($_REQUEST['LongformURL'])==''))
 ){
 
-  $LongformText=file_get_contents($_REQUEST['LongformURL']);
+  include('CacheURL.php');
+  $LongformText=CacheURL($_REQUEST['LongformURL']);
+  
   if($LongformText==false){
-    echo '<p>Invalid URL</p>';
+    echo '<p>Unable to fetch URL.</p>';
   }else{
     if(isset($_REQUEST['NumberOfSentences'])){
       $NumberOfSentences = $_REQUEST['NumberOfSentences'];
@@ -22,10 +23,12 @@ if(
     //TODO get only the text in a better way that this
     $LongformText = strip_tags($LongformText);
 
-    echo Condense($LongformText,$NumberOfSentences);
+    echo $LongformText;
+    exit;
+    //echo Condense($LongformText,$NumberOfSentences);
   }
-
-}else*/if(isset($_REQUEST['LongformText'])){
+  
+}elseif(isset($_REQUEST['LongformText'])){
   
   if(
     (!(isset($_REQUEST['NumberOfSentences'])))||
