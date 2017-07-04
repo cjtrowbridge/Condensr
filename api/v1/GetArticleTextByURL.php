@@ -31,6 +31,9 @@ function GetArticleTextByURL($URL){
     foreach($Divs as $Div){
       $Article = $Div->textContent;
     }
+    if($Article==''){
+      var_dump($Divs);
+      exit;
   }
 
   //Clean up article text
