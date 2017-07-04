@@ -11,43 +11,41 @@ if(
   $LongformText=CacheURL($_REQUEST['LongformURL']);
   
   if($LongformText==false){
-    echo '<p>Unable to fetch URL.</p>';
-  }else{
-    if(isset($_REQUEST['NumberOfSentences'])){
-      $NumberOfSentences = $_REQUEST['NumberOfSentences'];
-    }else{
-      $NumberOfSentences = 1;
-    }
-
-    //Get article text only
-    $doc = new DOMDocument();
-    $doc->loadHTML($LongformText);
-    $Article = $doc->getElementById('article-text');
-    
-    
-    //Clean up article text
-    
-    //remove whitespace
-    $Article = trim($Article->textContent);
-    
-    //convert tabs to spaces
-    $Article = str_replace('  ',' ',$Article);
-    
-    //remove any repeated spaces
-    $StillHaveSpaces = true;
-    while($StillHaveSpaces){
-      $Temp = str_replace('  ',' ',$Article);
-      if($Article == $Temp){
-        $StillHaveSpaces = false;
-      }
-      $Article = $Temp;
-      unset($Temp);
-    }
-    
-    echo $Article;
-    exit;
-    //echo Condense($LongformText,$NumberOfSentences);
+    die('<p>Unable to fetch URL.</p>');
   }
+  
+  //Get article text only
+  $doc = new DOMDocument();
+  $doc->loadHTML($LongformText);
+  $Article = $doc->getElementById('article-text');
+
+
+  //Clean up article text
+
+  //remove whitespace
+  $Article = trim($Article->textContent);
+
+  //convert tabs to spaces
+  $Article = str_replace('  ',' ',$Article);
+
+  //remove any repeated spaces
+  $StillHaveSpaces = true;
+  while($StillHaveSpaces){
+    $Temp = str_replace('  ',' ',$Article);
+    if($Article == $Temp){
+      $StillHaveSpaces = false;
+    }
+    $Article = $Temp;
+    unset($Temp);
+  }
+
+  if(isset($_REQUEST['NumberOfSentences'])){
+    $NumberOfSentences = intval($_REQUEST['NumberOfSentences']);
+    echo Condense($LongformText,$NumberOfSentences);
+  }else{
+    echo $Article;
+  }
+  exit;
   
 }elseif(isset($_REQUEST['LongformText'])){
   
