@@ -24,8 +24,10 @@ if(
   $Article = trim($doc->getElementById('article-text')->textContent);
   
   if(trim($Article->textContent)==''){
-    $Article = $doc->getElementsByTagName('body')[0];
-    var_dump($Article);
+    $Divs = $doc->getElementsByTagName('div');
+    foreach($Divs as $Div){
+      var_dump($Div);
+    }
     exit;
   }
 
