@@ -18,7 +18,7 @@ if(
     die('<p>Unable to fetch URL.</p>');
   }
   
-  $LongformText=strip_tags($LongformText);
+  $Article=strip_tags($LongformText);
   
   /*
   
