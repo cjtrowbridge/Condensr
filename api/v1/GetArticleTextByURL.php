@@ -15,13 +15,21 @@ function GetArticleTextByURL($URL){
   $doc->loadHTML($LongformText);
   $Article = trim($doc->getElementById('article-text')->textContent);
   
-  if(trim($Article->textContent)==''){
+  if($Article==''){
     $Divs = $doc->getElementsByTagName('div');
     foreach($Divs as $Div){
       $Class = $Div->getAttribute('class');
       if(!(strpos($Class,'article-text')===false)){
         $Article = $Div->textContent;
       }
+    }
+  }
+  
+  
+  if($Article==''){
+    $Divs = $doc->getElementsByTagName('article');
+    foreach($Divs as $Div){
+      $Article = $Div->textContent;
     }
   }
 
