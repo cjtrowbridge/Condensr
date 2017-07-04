@@ -20,8 +20,10 @@ if(
     }
 
     //Clean up the contents of the page before condensing
+    
+    
     //TODO get only the text in a better way that this
-    $LongformText = strip_tags($LongformText);
+    //$LongformText = strip_tags($LongformText);
 
     echo $LongformText;
     exit;
