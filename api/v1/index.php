@@ -26,8 +26,9 @@ if(
   if(trim($Article->textContent)==''){
     $Divs = $doc->getElementsByTagName('div');
     foreach($Divs as $Div){
+      $Class = $Div->getAttribute('class');
+      echo '<h1>'.$Class.'</h1>';
       var_dump($Div);
-      var_dump($Div->attributes);
     }
     exit;
   }
