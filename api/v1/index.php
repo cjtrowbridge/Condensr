@@ -26,11 +26,8 @@ if(
     $doc->loadHTML($LongformText);
     
     $Article = $doc->getElementById('article-text');
-    var_dump($Article);
-    //TODO get only the text in a better way that this
-    //$LongformText = strip_tags($LongformText);
-
-    echo $Article;
+    
+    echo $Article->textContent;
     exit;
     //echo Condense($LongformText,$NumberOfSentences);
   }
