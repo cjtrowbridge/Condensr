@@ -17,13 +17,14 @@ if(
   //Get article text only
   $doc = new DOMDocument();
   $doc->loadHTML($LongformText);
-  $Article = $doc->getElementById('article-text');
-
+  $Article = trim($doc->getElementById('article-text')->textContent);
+  
+  if(trim($Article->textContent)==''){
+    $Article = trim($doc->getElementByTag('body'));
+  }
+  
 
   //Clean up article text
-
-  //remove whitespace
-  $Article = trim($Article->textContent);
   
   if($Article==''){
     mail('chris.j.trowbridge@gmail.com','IDK HOW TO PARSE THIS','<a href="view-source:'.$_REQUEST['LongformURL'].'">'.$_REQUEST['LongformURL'].'</a>');
