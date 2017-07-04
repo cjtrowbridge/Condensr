@@ -19,8 +19,9 @@ function GetArticleTextByURL($URL){
     $Divs = $doc->getElementsByTagName('div');
     foreach($Divs as $Div){
       $Class = $Div->getAttribute('class');
-      echo '<h1>'.$Class.'</h1>';
-      var_dump($Div);
+      if(!(strpos($Class,'article-text')===false)){
+        var_dump($Div->textContent);
+      }
     }
     exit;
   }
