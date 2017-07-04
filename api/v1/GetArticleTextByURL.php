@@ -50,5 +50,16 @@ function GetArticleTextByURL($URL){
   //Remove a single space at the beginning of a line
   $Article = str_replace(PHP_EOL.' ',PHP_EOL,$Article);
   
+  //remove any repeated PHP_EOL
+  $StillHaveGaps = true;
+  while($StillHaveGaps){
+    $Temp = str_replace(PHP_EOL.PHP_EOL,PHP_EOL,$Article);
+    if($Article == $Temp){
+      $StillHaveGaps = false;
+    }
+    $Article = $Temp;
+    unset($Temp);
+  }
+  
   return $Article;
 }
