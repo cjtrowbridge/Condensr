@@ -19,15 +19,17 @@ if(
       $NumberOfSentences = 1;
     }
 
-    //Clean up the contents of the page before condensing
-    
-     
+    //Get article text only
     $doc = new DOMDocument();
     $doc->loadHTML($LongformText);
-    
     $Article = $doc->getElementById('article-text');
     
-    $Article = trim($Article);
+    
+    //Clean up article text
+    
+    //remove whitespace
+    $Article = trim($Article->textContent);
+    
     //convert tabs to spaces
     $Article = str_replace('  ',' ',$Article);
     
@@ -42,7 +44,7 @@ if(
       unset($Temp);
     }
     
-    echo $Article->textContent;
+    echo $Article;
     exit;
     //echo Condense($LongformText,$NumberOfSentences);
   }
