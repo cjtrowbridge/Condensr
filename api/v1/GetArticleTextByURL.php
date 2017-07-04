@@ -20,10 +20,9 @@ function GetArticleTextByURL($URL){
     foreach($Divs as $Div){
       $Class = $Div->getAttribute('class');
       if(!(strpos($Class,'article-text')===false)){
-        var_dump($Div->textContent);
+        $Article = $Div->textContent;
       }
     }
-    exit;
   }
 
   //Clean up article text
