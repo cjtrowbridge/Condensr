@@ -27,6 +27,21 @@ if(
     
     $Article = $doc->getElementById('article-text');
     
+    $Article = trim($Article);
+    //convert tabs to spaces
+    $Article = str_replace('  ',' ',$Article);
+    
+    //remove any repeated spaces
+    $StillHaveSpaces = true;
+    while($StillHaveSpaces){
+      $Temp = str_replace('  ',' ',$Article);
+      if($Article == $Temp){
+        $StillHaveSpaces = false;
+      }
+      $Article = $Temp;
+      unset($Temp);
+    }
+    
     echo $Article->textContent;
     exit;
     //echo Condense($LongformText,$NumberOfSentences);
