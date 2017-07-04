@@ -19,6 +19,17 @@ function GetArticleTextByURL($URL){
     $Article = trim($Item->textContent);
   }
   
+  
+  if($Article==''){
+    $Divs = $doc->getElementsByTagName('div');
+    foreach($Divs as $Div){
+      $Class = $Div->getAttribute('class');
+      if(!(strpos($Class,'dateline-storybody')===false)){
+        $Article = $Div->textContent;
+      }
+    }
+  }
+  
   if($Article==''){
     $Divs = $doc->getElementsByTagName('div');
     foreach($Divs as $Div){
