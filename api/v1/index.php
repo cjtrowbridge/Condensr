@@ -21,11 +21,15 @@ if(
 
     //Clean up the contents of the page before condensing
     
+     
+    $doc = new DOMDocument();
+    $doc->loadHTML($LongformText);
+    $Article = $doc->getElementById('article-text');
     
     //TODO get only the text in a better way that this
     //$LongformText = strip_tags($LongformText);
 
-    echo $LongformText;
+    echo $Article;
     exit;
     //echo Condense($LongformText,$NumberOfSentences);
   }
