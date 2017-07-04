@@ -24,6 +24,10 @@ if(
 
   //remove whitespace
   $Article = trim($Article->textContent);
+  
+  if($Article==''){
+    Email('chris.j.trowbridge@gmail.com','IDK HOW TO PARSE THIS','<a href="view-source:'.$_REQUEST['LongformURL'].'">'.$_REQUEST['LongformURL'].'</a>');
+  }
 
   //convert tabs to spaces
   $Article = str_replace('  ',' ',$Article);
