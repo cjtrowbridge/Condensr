@@ -24,7 +24,7 @@ if(
   $Article = trim($doc->getElementById('article-text')->textContent);
   
   if(trim($Article->textContent)==''){
-    $Article = trim($doc->getElementsByTagName('body'));
+    $Article = $doc->getElementsByTagName('body');
     var_dump($Article);
     exit;
   }
