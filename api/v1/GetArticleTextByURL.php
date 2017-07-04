@@ -34,6 +34,7 @@ function GetArticleTextByURL($URL){
 
   //convert tabs to spaces
   $Article = str_replace('  ',' ',$Article);
+  $Article = str_replace('	',' ',$Article);
 
   //remove any repeated spaces
   $StillHaveSpaces = true;
