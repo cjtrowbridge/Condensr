@@ -13,7 +13,14 @@ function GetArticleTextByURL($URL){
   //Get article text only
   $doc = new DOMDocument();
   $doc->loadHTML($LongformText);
-  $Article = trim($doc->getElementById('article-text')->textContent);
+
+  $Article = $doc->getElementById('article-text');
+  
+  var_dump($Article);exit;
+  
+  //->textContent
+  
+  $Article = trim($Article);
   
   if($Article==''){
     $Divs = $doc->getElementsByTagName('div');
