@@ -47,5 +47,8 @@ function GetArticleTextByURL($URL){
     unset($Temp);
   }
   
+  //Remove a single space at the beginning of a line
+  $Article = str_replace(PHP_EOL.' ',PHP_EOL,$Article);
+  
   return $Article;
 }
