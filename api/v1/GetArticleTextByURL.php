@@ -63,20 +63,7 @@ function GetArticleTextByURL($URL){
     die('Unable to parse');
   }
 
-  //convert tabs to spaces
-  $Article = str_replace('  ',' ',$Article);
-  $Article = str_replace('	',' ',$Article);
-
-  //remove any repeated spaces
-  $StillHaveSpaces = true;
-  while($StillHaveSpaces){
-    $Temp = str_replace('  ',' ',$Article);
-    if($Article == $Temp){
-      $StillHaveSpaces = false;
-    }
-    $Article = $Temp;
-    unset($Temp);
-  }
+  
   
   //Remove a single space at the beginning of a line
   $Article = str_replace(PHP_EOL.' ',PHP_EOL,$Article);
@@ -91,6 +78,11 @@ function GetArticleTextByURL($URL){
     $Article = $Temp;
     unset($Temp);
   }
+  
+  //convert tabs, new lines, and repeated spaces to periods
+  $Article = str_replace('  ','. ',$Article);
+  $Article = str_replace('	','. ',$Article);
+  $Article = str_replace(PHP_EOL,'. ',$Article);
   
   $Article = strip_tags($Article);
   
