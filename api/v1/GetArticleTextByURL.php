@@ -2,7 +2,6 @@
 
 function GetArticleTextByURL($URL){
   
-  
   include('CacheURL.php');
   $LongformText=CacheURL($_REQUEST['LongformURL']);
   
@@ -10,15 +9,20 @@ function GetArticleTextByURL($URL){
     die('<p>Unable to fetch URL.</p>');
   }
   
-  //Get article text only
-  $doc = new DOMDocument();
-  $doc->loadHTML($LongformText);
-
-  $Items = $doc->getElementById('article-text');
-  foreach($Items as $Item){
-    $Article = trim($Item->textContent);
-  }
   
+  $Article = getplaintextfromhtml($LongformText);
+  
+  
+  if($Article==''){  
+    //Get article text only
+    $doc = new DOMDocument();
+    $doc->loadHTML($LongformText);
+
+    $Items = $doc->getElementById('article-text');
+    foreach($Items as $Item){
+      $Article = trim($Item->textContent);
+    }
+  }
   
   if($Article==''){
     $Divs = $doc->getElementsByTagName('div');
@@ -90,4 +94,11 @@ function GetArticleTextByURL($URL){
   }
   
   return $Article;
+}
+
+function getplaintextfromhtml($html){
+  include 'simple_html_dom.php';
+  $html = str_get_html($html);
+  $data = $html->find('body', 0)->innertext;
+  return $data;
 }
