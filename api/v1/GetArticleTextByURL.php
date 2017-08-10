@@ -92,6 +92,8 @@ function GetArticleTextByURL($URL){
     unset($Temp);
   }
   
+  $Article = strip_tags($Article);
+  
   return $Article;
 }
 
