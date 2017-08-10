@@ -11,7 +11,7 @@ function GetArticleTextByURL($URL){
   
   
   $Article = getplaintextfromhtml($LongformText);
-  
+  return $Article;
   
   if($Article==''){  
     //Get article text only
