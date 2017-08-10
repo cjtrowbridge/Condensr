@@ -99,6 +99,6 @@ function GetArticleTextByURL($URL){
 function getplaintextfromhtml($html){
   include 'simple_html_dom.php';
   $html = str_get_html($html);
-  $data = $html->find('body', 0)->innertext;
+  $data = $html->find('body', 0)->text;
   return $data;
 }
