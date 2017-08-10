@@ -36,7 +36,7 @@
       <div class="col-xs-12">
         <h1><a href="">Condensr</a></h1>
         <div class="form-group">
-          <label for="longform">Put some long-form text here. We will condense it to as few sentences as you would like.</label>
+          <label for="longform">Put some long-form text here. We will condense it to as few sentences as you would like. <a href="https://github.com/cjtrowbridge/Condensr">How does it work?</a></label>
           <textarea class="form-control" name="LongformText" id="LongformText" rows="6"><?php 
             if(isset($_REQUEST['LongformURL'])){
               $URL = 'https://condensr.io/api/v1/?LongformURL='.urlencode($_REQUEST['LongformURL']);
