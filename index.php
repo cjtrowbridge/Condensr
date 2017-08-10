@@ -40,7 +40,7 @@
           <textarea class="form-control" name="LongformText" id="LongformText" rows="6"><?php 
             if(isset($_REQUEST['LongformURL'])){
               $URL = 'https://condensr.io/api/v1/?LongformURL='.urlencode($_REQUEST['LongformURL']);
-              echo file_get_contents($URL).PHP_EOL.PHP_EOL.$URL;
+              echo file_get_contents($URL);
             }
           ?></textarea>
         </div>
