@@ -11,7 +11,6 @@ function GetArticleTextByURL($URL){
   
   
   $Article = getplaintextfromhtml($LongformText);
-  return $Article;
   
   if($Article==''){  
     //Get article text only
@@ -85,7 +84,7 @@ function GetArticleTextByURL($URL){
   //remove any repeated PHP_EOL
   $StillHaveGaps = true;
   while($StillHaveGaps){
-    $Temp = str_replace(PHP_EOL.PHP_EOL,PHP_EOL.PHP_EOL,$Article);
+    $Temp = str_replace(PHP_EOL.PHP_EOL,PHP_EOL,$Article);
     if($Article == $Temp){
       $StillHaveGaps = false;
     }
