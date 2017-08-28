@@ -34,7 +34,9 @@
   <form onsubmit="return false;" class="form container">
     <div class="row no-gutters">
       <div class="col-xs-12">
-        <br><p><a href="javascript:(function(){m='https://condensr.io/?LongformURL='+encodeURIComponent(document.location);w=window.open(m);})();" class="btn btn-lg btn-outline-success">Condensr</a> &lt;&lt;= This is a bookmarklet! Try it on an article.</p>
+        <br>
+        <!--p><a href="javascript:(function(){m='https://condensr.io/?LongformURL='+encodeURIComponent(document.location);w=window.open(m);})();" class="btn btn-lg btn-outline-success">Condensr</a> &lt;&lt;= This is a bookmarklet! Try it on an article.</p-->
+        <h1><a href="/">Condensr.io</a></h1>
         <div class="form-group">
           <label for="longform">Put some long-form text here. We will condense it to as few sentences as you would like. <a href="https://github.com/cjtrowbridge/Condensr">How does it work?</a></label>
           <textarea class="form-control" name="LongformText" id="LongformText" rows="6"><?php 
