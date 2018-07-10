@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.8/css/theme.bootstrap_4.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.8/css/theme.ice.min.css">
   
-  <script src="https://api.condensr.io/v1/condensr-api-helper.js"></script>
+  <script src="api/v1/condensr-api-helper.js"></script>
 
 </head>
 <body>
